@@ -1,0 +1,106 @@
+\documentclass[12pt,a4paper,oneside]{memoir}
+%========================================Packages============================================
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{titlesec}
+\usepackage[left=1.25in, right=1in, top=0.75in, bottom=0.75in]{geometry}
+\usepackage{setspace}
+\usepackage[numbers]{natbib}
+\usepackage{pdfpages}%to attach pdf files
+\usepackage{titlesec}
+\usepackage{xltabular}
+\usepackage{float}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{csquotes}
+
+\usepackage{blindtext}
+
+\setSpacing{1.25} % 1.5 Line Spacing
+
+\lstset{ 
+    language=Python, 
+    backgroundcolor=\color{lightgray!20},
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true
+}
+
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+%========================================VTU GUIDELINE for chapter section and subsection============================================
+\newcommand{\tit}{\fontsize{18}{22}\selectfont}
+\newcommand{\chapft}{\fontsize{16}{18}\selectfont}
+\newcommand{\secfnt}{\fontsize{16}{18}\selectfont}
+\newcommand{\ssecfnt}{\fontsize{14}{16}\selectfont}
+\newcommand{\sssecfnt}{\fontsize{12}{14}\selectfont}
+
+\titleformat{\chapter}[display]
+  {\normalfont\chapft\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\tit\centering}
+
+\titleformat{\section}
+  {\normalfont\secfnt\bfseries}{\thesection}{1em}{\raggedright}
+
+\titleformat{\subsection}
+  {\normalfont\ssecfnt\bfseries}{\thesubsection}{1em}{\raggedright}
+
+\titleformat{\subsubsection}
+  {\normalfont\sssecfnt\bfseries}{\thesubsubsection}{1em}{\raggedright}
+
+\setsecheadstyle{\secfnt\bfseries\raggedright}
+\setsubsecheadstyle{\ssecfnt\bfseries\raggedright}
+\setsubsubsecheadstyle{\sssecfnt\bfseries\raggedright}
+\setlength{\beforechapskip}{0pt} % adjust vertical space before chapters
+\setlength{\afterchapskip}{20pt} % adjust vertical space after chapters
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\setsecnumdepth{subsection}
+%=========================================================================================================================
+
+\begin{document}
+%======================================Front Pages=========================================================================
+\includepdf{pdf/1_COVER_PAGE}
+\includepdf{pdf/2_CERTIFICATE}
+
+
+\frontmatter
+\pagestyle{plain}
+\pagenumbering{roman}
+%\includepdf{pdf/4_ABSTRACT}
+\renewcommand{\contentsname}{Table of Contents}
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables 
+\mainmatter
+%======================================Header and Footer========================
+\pagestyle{myheadings}
+\makeheadrule{myheadings}{\textwidth}{0.4pt}
+\makefootrule{myheadings}{\textwidth}{0.4pt}{\footruleskip}
+\makeoddhead{myheadings}{\small{Your Project Title}}{\small{\leftmark}}{\small{2023-24}}
+\makeoddfoot{myheadings}{\small{Department of Master of Computer Applications, VCET, Puttur}}{}{\small{\thepage}}
+
+% Include subsections in numbering
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+%=====================================================r========================
+\chapter{Introduction}
+\input{chapters/chapter1}
+\chapter{Literature Review}
+\input{chapters/chapter2}
+
+\newpage % Start references on a new page
+%======================================end front Pages========================
+\bibliographystyle{unsrtnat}
+\bibliography{bib} % name your BibTeX data base
+\nocite{*}
+%========================================================================
+\end{document}
